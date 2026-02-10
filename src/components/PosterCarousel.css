@@ -11,6 +11,18 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: none;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+}
+
+.carousel-container--empty {
+  touch-action: auto;
+}
+
+.carousel-empty-message {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+  margin: 0;
 }
 
 .carousel-stage {
@@ -20,12 +32,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  perspective: 600px;
   perspective-origin: 50% 50%;
   transform-style: preserve-3d;
 }
 
 .carousel-stage--cylinder {
-  perspective: 900px;
+  transform-style: preserve-3d;
 }
 
 .poster-card {
@@ -33,17 +46,19 @@
   left: 50%;
   top: 50%;
   margin-left: 0;
-  margin-top: -75px;
+  margin-top: 0;
   padding: 0;
   border: none;
   background: transparent;
   cursor: pointer;
   border-radius: 4px;
   overflow: hidden;
+  box-sizing: border-box;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, border 0.2s;
   backface-visibility: hidden;
   transform-origin: center center;
+  transform-style: preserve-3d;
 }
 
 .poster-card:hover {
@@ -51,7 +66,8 @@
 }
 
 .poster-card--selected {
-  box-shadow: 0 0 0 2px #fff, 0 12px 32px rgba(0, 0, 0, 0.6);
+  border: 2px dashed #fff;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
 .poster-card img {
@@ -61,4 +77,28 @@
   object-fit: cover;
   pointer-events: none;
   vertical-align: middle;
+}
+
+.poster-card-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.poster-card-fallback-title {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

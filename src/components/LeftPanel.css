@@ -1,23 +1,26 @@
+/* Goodflix-style left panel: bordered boxes, clean typography, grid overlay */
 .left-panel {
   position: relative;
   width: 42%;
   min-width: 360px;
   max-width: 520px;
   height: 100%;
-  background: #0a0a0a;
+  background: #000;
   padding: 2.5rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   overflow: auto;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 .left-panel-grid {
   position: absolute;
   inset: 0;
+  background-color: #000;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
   pointer-events: none;
 }
 
@@ -30,36 +33,39 @@
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   color: #fff;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .headline {
-  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
   font-weight: 700;
   line-height: 1.2;
   color: #fff;
   margin: 0;
+  letter-spacing: 0.02em;
 }
 
 .description {
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   line-height: 1.55;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.7);
   margin: 0;
 }
 
 .instruction {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.15em;
   color: rgba(255, 255, 255, 0.5);
   margin: 0.5rem 0 0;
-  border-top: 1px dashed rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   padding-top: 1rem;
+  text-transform: uppercase;
 }
 
 .movie-details {
@@ -67,82 +73,187 @@
 }
 
 .movie-details-title {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: 700;
+  letter-spacing: 0.03em;
   color: #fff;
-  margin: 0 0 0.35rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
 }
 
-.movie-details-meta {
-  font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
-  margin: 0 0 0.75rem;
+/* Bordered meta boxes (YEAR, LANG, RATING) */
+.movie-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.meta-box {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 0.5rem 0.65rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.meta-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.55);
+  text-transform: uppercase;
+}
+
+.meta-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.meta-rating-suffix {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .movie-details-overview {
-  font-size: 0.9375rem;
+  font-size: 0.9rem;
   line-height: 1.5;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.85);
   margin: 0;
 }
 
+.movie-quote {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0.75rem 0 0;
+  border-left: 2px solid rgba(255, 255, 255, 0.35);
+  padding-left: 0.75rem;
+}
+
+/* Two-column: VIBE CHECK | CREATIVE TEAM */
+.details-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.vibe-check,
+.creative-team {
+  margin-top: 0;
+}
+
+.vibe-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 0.45rem;
+  text-transform: uppercase;
+}
+
+.vibe-duration {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-right: 0.5rem;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.vibe-tags,
+.genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.25rem;
+}
+
+/* Bordered tag buttons (genre / vibe) */
+.vibe-tag {
+  padding: 0.4rem 0.65rem;
+  font: inherit;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-transform: uppercase;
+}
+
+.vibe-tag:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.creative-line {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0.2rem 0 0;
+}
+
+/* Search: underline style + RUN button with border */
 .search-row {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 0.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 0.35rem;
 }
 
 .search-input {
   flex: 1;
   min-width: 0;
-  padding: 0.75rem 1rem;
+  padding: 0.5rem 0;
   font: inherit;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
   color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
+  background: transparent;
+  border: none;
   outline: none;
-  transition: border-color 0.2s, background 0.2s;
+  border-radius: 0;
 }
 
 .search-input::placeholder {
   color: rgba(255, 255, 255, 0.4);
-}
-
-.search-input:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.18);
-}
-
-.search-input:focus {
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.08);
+  text-transform: uppercase;
 }
 
 .run-btn {
-  padding: 0.75rem 1.25rem;
+  padding: 0.5rem 1rem;
   font: inherit;
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: #0a0a0a;
-  background: #fff;
-  border: none;
-  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0;
   cursor: pointer;
   white-space: nowrap;
-  transition: background 0.2s, transform 0.1s;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
 }
 
 .run-btn:hover {
-  background: #e0e0e0;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .run-btn:active {
-  transform: scale(0.98);
+  background: rgba(255, 255, 255, 0.2);
 }
 
+/* Vibe suggestion buttons: bordered boxes */
 .suggestions {
   display: flex;
   flex-wrap: wrap;
@@ -150,20 +261,63 @@
 }
 
 .suggestion-tag {
-  padding: 0.5rem 0.85rem;
+  padding: 0.5rem 0.8rem;
   font: inherit;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.08em;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 4px;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
+  text-transform: uppercase;
 }
 
 .suggestion-tag:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Genre filter section */
+.genre-filter {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.genre-filter-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+}
+
+.genre-tag {
+  padding: 0.45rem 0.7rem;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #fff;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  text-transform: uppercase;
+}
+
+.genre-tag:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.genre-tag--active {
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #fff;
 }

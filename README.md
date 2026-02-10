@@ -1,4 +1,4 @@
-# goodflix-style movie carousel
+# IMDb-style movie carousel
 
 Left panel: movie details + search. Right panel: **3 rows** of movie posters in a round, rotatable cylinder.
 
